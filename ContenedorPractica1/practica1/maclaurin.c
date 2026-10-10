@@ -11,7 +11,7 @@
  *     gcc -O2 -std=c17 -Wall -o maclaurin maclaurin.c -lm
  *     ./maclaurin
  *
- * Faltan dos líneas, marcadas COMPLETAR 1 y COMPLETAR 2.
+ * Las dos líneas COMPLETAR 1 y COMPLETAR 2 están implementadas.
  */
 #include <math.h>
 #include <stdio.h>
@@ -42,9 +42,9 @@ int main(void)
         aprox = aprox + termino;
         n = n + 1;
         /* COMPLETAR 1: el término siguiente, x^n / n!, a partir del anterior. */
-        termino = 0.0;   /* <- sustituya 0.0 por la expresión correcta */
+        termino = termino * X / n;
         /* COMPLETAR 2: el error relativo aproximado, en %. Ojo: fabs, no abs. */
-        ea = 0.0;   /* <- sustituya 0.0 por la expresión correcta */
+        ea = fabs((aprox - anterior) / aprox) * 100.0;
         et = fabs((verdadero - aprox) / verdadero) * 100.0;
         if (n == 1)
             printf("%8d %20.15f %13.6g %13s\n", n, aprox, et, "-");

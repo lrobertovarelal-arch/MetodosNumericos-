@@ -1,0 +1,15 @@
+# Entorno original del curso, adaptado a la ubicación tarea1/entorno.
+# Los programas de tarea1 quedan visibles dentro del contenedor en /trabajo.
+services:
+  metodos:
+    build: .
+    image: metodos-1151039:26o
+    container_name: metodos_tarea1
+    volumes:
+      - ../:/trabajo
+    working_dir: /trabajo
+    stdin_open: true
+    tty: true
+    environment:
+      OMP_NUM_THREADS: "1"
+      MPLBACKEND: "Agg"

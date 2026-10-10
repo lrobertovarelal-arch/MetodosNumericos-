@@ -1,0 +1,19 @@
+# Ejecutables generados (se conservan todos los archivos fuente).
+/ContenedorPractica1/practica1/maclaurin
+/ContenedorPractica2/practica2/raices
+/tarea1/programa1-suma/suma
+/tarea1/programa2-calculadora/calculadora
+*.exe
+*.o
+*.obj
+*.out
+__pycache__/
+*.py[cod]
+octave-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+.env
+.env.*

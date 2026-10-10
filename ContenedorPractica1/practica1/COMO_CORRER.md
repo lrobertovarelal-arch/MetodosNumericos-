@@ -10,9 +10,22 @@ de la unidad I, y la tabla es la de la lámina 25.
 |---|---|---|
 | `maclaurin.m` | Completo | Correrlo y comparar con la lámina 25 |
 | `maclaurin.py` | Completo | Correrlo; en el ejercicio 4, cambiar `CIFRAS` |
-| `maclaurin.c` | Le faltan dos líneas: `COMPLETAR 1` y `COMPLETAR 2` | Completarlas, compilar y correr |
+| `maclaurin.c` | Las dos líneas `COMPLETAR` están implementadas | Compilar, correr y comparar |
 
 Todo se corre **dentro del contenedor**, en la carpeta `practica1`.
+
+Desde PowerShell en Windows, estando en `ContenedorPractica1`:
+
+```powershell
+docker compose up -d --build
+docker compose exec metodos bash
+```
+
+Dentro del contenedor:
+
+```bash
+cd /trabajo/practica1
+```
 
 ## Octave
 
@@ -34,6 +47,28 @@ gcc -O2 -std=c17 -Wall -o maclaurin maclaurin.c -lm
 ```
 
 Cada vez que cambien `maclaurin.c` hay que volver a compilar.
+
+### Comparación de las tres salidas
+
+Estos comandos se ejecutan dentro del contenedor en `/trabajo/practica1`.
+Los archivos de verificación se guardan en un directorio temporal:
+
+```bash
+verificacion=$(mktemp -d /tmp/maclaurin.XXXXXX)
+gcc -O2 -std=c17 -Wall -Wextra -Werror -o "$verificacion/maclaurin" maclaurin.c -lm
+"$verificacion/maclaurin" > "$verificacion/c.txt"
+python3 maclaurin.py > "$verificacion/python.txt"
+octave-cli --quiet maclaurin.m > "$verificacion/octave.txt"
+tail -n +2 "$verificacion/c.txt" > "$verificacion/c-numeros.txt"
+tail -n +2 "$verificacion/python.txt" > "$verificacion/python-numeros.txt"
+tail -n +2 "$verificacion/octave.txt" > "$verificacion/octave-numeros.txt"
+diff -u "$verificacion/c-numeros.txt" "$verificacion/python-numeros.txt"
+diff -u "$verificacion/c-numeros.txt" "$verificacion/octave-numeros.txt"
+```
+
+Se omite únicamente la primera línea, que identifica el lenguaje. Ambos `diff`
+deben terminar con código 0 y sin diferencias. La compilación estricta también
+debe terminar con código 0.
 
 ## Qué debe salir
 
@@ -67,3 +102,18 @@ que se vea que ya no hacía falta.
 
 En `maclaurin.py` cambien la línea `CIFRAS = 3` por `CIFRAS = 6`, corran el programa y
 anoten cuántos términos hicieron falta. Repitan con `CIFRAS = 17`.
+
+Para repetir ese ejercicio sin editar el archivo, dentro del contenedor:
+
+```bash
+python3 - <<'PY'
+import maclaurin
+for cifras in (3, 6, 17):
+    maclaurin.CIFRAS = cifras
+    maclaurin.main()
+PY
+```
+
+Se verificaron 6, 9 y 16 términos, respectivamente. La tabla medida está en el
+README. Las capturas allí indicadas son imágenes de las ejecuciones; el material
+incluido no especifica gráficas adicionales.

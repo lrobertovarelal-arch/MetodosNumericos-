@@ -19,7 +19,7 @@ Se ejecutaron los programas `maclaurin.m` y `maclaurin.py` sin modificar su proc
 
 Ambos programas generaron tablas idénticas. Se necesitaron seis términos para alcanzar el criterio de paro, con una aproximación de 1.648697916666667 y un error relativo verdadero de 0.00141649 %.
 
-Los resultados son consistentes entre ambos programas. Queda pendiente verificar directamente su coincidencia con la lámina 25 de la unidad I.
+Los resultados de Octave y Python coinciden con el ejemplo resuelto de la lámina 25 de la Unidad I, al considerar el redondeo de los valores presentados. Las seis primeras aproximaciones y sus errores relativos corresponden a los resultados de la lámina. Aunque la presentación incluye un séptimo término para mostrar la continuación de la convergencia, establece que el criterio de paro de 0.05 % se satisface desde el sexto término, tal como ocurre en nuestros programas.
 
 **Evidencia de Octave:**
 

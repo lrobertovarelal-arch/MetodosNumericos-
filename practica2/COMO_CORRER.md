@@ -158,3 +158,17 @@ Si `git push` responde que la rama cambió, primero `git pull` y después otra v
 | La tabla de C sale con `nan` o `inf` | Faltan líneas `COMPLETAR` | Revisa la que corresponde a ese método |
 | Todos los métodos «convergen» en la iteración 2 | `error_aprox` devuelve 0 | Es la línea `COMPLETAR 1` |
 | Cambiaste `raices.c` y la salida no cambia | No volviste a compilar | `gcc ...` y después `./raices` |
+
+
+## Estado actual de esta rama (ecuación 23)
+
+`raices.c` y `raices.py` ya incluyen el voladizo y las cinco fórmulas completas.
+Las indicaciones anteriores de completar código y la tabla de [12, 16] describen
+el ejemplo original. Ahora C y Python deben coincidir entre sí para [1, 3];
+Octave conserva el paracaidista y no debe compararse con el voladizo.
+
+Desde `practica2/`, `python3 verificar.py` reproduce la verificación completa
+(requiere GCC, NumPy, SciPy y Matplotlib). También puedes ejecutar por separado
+los comandos originales de Python y C. Las salidas comprobadas están en `resultados/`.
+La única evidencia personal pendiente es `img/07-integrante-varela.png`, con su
+commit propio y enlace en la sección 5 del README.

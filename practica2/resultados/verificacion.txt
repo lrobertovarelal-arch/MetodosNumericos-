@@ -1,0 +1,5 @@
+Verificación correcta: cinco métodos, tolerancias aproximada y verdadera <= 0.5 %.
+Todas las tablas C/Python coinciden a la precisión impresa; C sin advertencias.
+Referencia independiente (Decimal, 60 dígitos): 1.87510406871196116644530824107821416257011173353106998824539
+Python 3.12.14 NumPy 2.3.5 SciPy 1.17.0 Matplotlib 3.10.8
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0

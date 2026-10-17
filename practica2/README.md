@@ -43,8 +43,6 @@ x_nuevo = x - delta * f(x) / (f(x + delta) - f(x));
 ![Compilación](img/03-c-compilacion.png)
 ![Ejecución en C](img/04-c-ejecucion.png)
 
-¿Coinciden las tablas de C con las de Octave y Python? Sí / No, y en qué.
-
 **Comparación de resultados**
 
 Sí. Los programas de C y Octave produjeron tablas idénticas en los valores mostrados, incluyendo las aproximaciones, los errores relativos y el número de iteraciones. El programa de Python también obtuvo las mismas raíces e iteraciones.
@@ -218,7 +216,7 @@ su captura con un commit propio (ver `COMO_CORRER.md`, sección 7).
 
 Se utilizó ChatGPT (OpenAI) como herramienta de apoyo durante el desarrollo de la práctica. Su uso consistió en explicar los fundamentos matemáticos de los cinco métodos numéricos, orientar la implementación de las fórmulas faltantes en C, apoyar la programación de las gráficas en Python y colaborar en la interpretación de los resultados y la redacción de la documentación.
 
-La evidencia previa del paracaidista se conserva. Para la ecuación 23, ChatGPT Work modificó y ejecutó Python y C, generó las gráficas, realizó las verificaciones reproducibles y completó el análisis. La captura personal del estudiante sigue pendiente; no se presenta la ejecución remota como evidencia de su computadora.
+La evidencia previa del paracaidista se conserva. Para la ecuación 23, ChatGPT Work modificó y ejecutó Python y C, generó las gráficas, realizó las verificaciones reproducibles y completó el análisis. La captura personal del estudiante está incluida en la sección 5 y fue agregada con su propio commit. Se distingue esta evidencia de las ejecuciones remotas de verificación.
 
 ## Referencias
 

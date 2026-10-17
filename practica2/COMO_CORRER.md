@@ -170,5 +170,5 @@ Octave conserva el paracaidista y no debe compararse con el voladizo.
 Desde `practica2/`, `python3 verificar.py` reproduce la verificación completa
 (requiere GCC, NumPy, SciPy y Matplotlib). También puedes ejecutar por separado
 los comandos originales de Python y C. Las salidas comprobadas están en `resultados/`.
-La única evidencia personal pendiente es `img/07-integrante-varela.png`, con su
-commit propio y enlace en la sección 5 del README.
+La evidencia personal `img/07-integrante-varela.png` ya fue agregada por el estudiante
+con su propio commit y está enlazada en la sección 5 del README.

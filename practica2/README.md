@@ -209,12 +209,10 @@ su captura con un commit propio (ver `COMO_CORRER.md`, sección 7).
 
 | Integrante | Usuario de GitHub | Captura |
 |---|---|---|
-| Luis Roberto Varela López | lrobertovarelal-arch | Pendiente: `img/07-integrante-varela.png` |
+| Luis Roberto Varela López | lrobertovarelal-arch | [Ver captura](img/07-integrante-varela.png) |
 
-**Único pendiente personal:** ejecutar el programa en tu computadora y agregar tu captura
-con un commit propio siguiendo la sección 7 de `COMO_CORRER.md`. Al hacerlo, sustituye
-el estado pendiente de esta tabla por el enlace a la imagen. No se agrega un enlace a
-una captura inexistente.
+![Ejecución en mi computadora](img/07-integrante-varela.png)
+
 
 ## Uso de inteligencia artificial
 

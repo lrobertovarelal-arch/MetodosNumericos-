@@ -3,11 +3,10 @@
 
 Los cinco métodos de la unidad II sobre la misma ecuación. Imprime una tabla
 por método y un resumen; las tablas deben coincidir, cifra por cifra, con las
-de raices.m, raices.c y las de las láminas.
+de raices.c para la ecuación 23; raices.m conserva el paracaidista.
 
 Python es la herramienta de verificación del curso: al final compara contra
-scipy.optimize.brentq y genera las gráficas. Las gráficas faltan:
-complete la función graficar().
+scipy.optimize.brentq y genera las gráficas.
 
 UEA 1151039 · Métodos Numéricos en Ingeniería · UAM Azcapotzalco · 26-O
 
@@ -24,38 +23,32 @@ import matplotlib.pyplot as plt
 from scipy.optimize import brentq
 
 # ======================== BLOQUE DEL PROBLEMA ========================
-# Es lo único que se cambia para resolver otra ecuación (ejercicio 4).
+# Ecuación 23 · Mecánica · Primera frecuencia natural de una viga en voladizo
 
-DESCRIPCION = ("f(c) = g m / c (1 - exp(-c t / m)) - v,  "
-               "g = 9.8, m = 68.1, t = 10, v = 40")
-DESCR_G = "g(c) = g m / v (1 - exp(-c t / m))"
+DESCRIPCION = 'f(x) = cos(x) cosh(x) + 1'
+DESCR_G = 'g(x) = x + f(x) / 4'
 
-GRAV = 9.8          # gravedad, m/s²
-MASA = 68.1         # masa del paracaidista, kg
-TIEMPO = 10.0       # tiempo de caída, s
-VEL = 40.0          # velocidad medida, m/s
 
-A, B = 12.0, 16.0   # intervalo de los métodos cerrados
-X0 = 12.5           # inicio de los métodos abiertos
-DELTA = 0.05        # incremento de la secante modificada
+A, B = 1.0, 3.0   # intervalo de los métodos cerrados
+X0 = 1.5         # inicio de los métodos abiertos
+DELTA = 0.01      # incremento de la secante modificada
 TOL = 0.5           # tolerancia: ea en %
 NMAX = 50           # máximo de iteraciones
 
 
-def f(c):
-    """La función cuya raíz se busca: el coeficiente de arrastre c, en kg/s."""
-    return GRAV * MASA / c * (1.0 - math.exp(-c * TIEMPO / MASA)) - VEL
+def f(x):
+    """La función cuya raíz se busca."""
+    return math.cos(x)*(math.exp(x) + math.exp(-x))/2 + 1
 
 
-def fp(c):
+def fp(x):
     """Su derivada, para Newton-Raphson."""
-    return (GRAV * MASA / c * (TIEMPO / MASA) * math.exp(-c * TIEMPO / MASA)
-            - GRAV * MASA / (c * c) * (1.0 - math.exp(-c * TIEMPO / MASA)))
+    return -math.sin(x)*(math.exp(x) + math.exp(-x))/2 + math.cos(x)*(math.exp(x) - math.exp(-x))/2
 
 
-def g(c):
-    """Despeje x = g(x) para punto fijo: c = g m / v (1 - exp(-c t / m))."""
-    return GRAV * MASA / VEL * (1.0 - math.exp(-c * TIEMPO / MASA))
+def g(x):
+    """Despeje x = g(x) para punto fijo."""
+    return x + f(x)/4
 
 # =====================================================================
 
@@ -204,19 +197,6 @@ def graficar(resultados, carpeta="img"):
        vertical en escala logarítmica y la tolerancia como línea horizontal.
     """
     os.makedirs(carpeta, exist_ok=True)
-    # COMPLETAR: las dos figuras que se describen arriba.
-    #
-    # Cada elemento de `resultados` es un diccionario con:
-    #   r["nombre"]    nombre del método
-    #   r["x"]         raíz aproximada
-    #   r["k"]         iteraciones realizadas
-    #   r["historia"]  lista de tuplas (k, x_k, ea_k); en la primera fila de los
-    #                  métodos cerrados ea_k vale None, y no se grafica.
-    #
-    # Funciones útiles: plt.figure, plt.plot, plt.semilogy, plt.axhline,
-    # plt.xlabel, plt.ylabel, plt.title, plt.legend, plt.grid, plt.savefig y
-    # plt.close. Guarde con plt.savefig(os.path.join(carpeta, "funcion.png")).
-        # Gráfica 1: función y raíces aproximadas
     xs = np.linspace(A, B, 500)
     ys = [f(x) for x in xs]
 
@@ -234,9 +214,9 @@ def graficar(resultados, carpeta="img"):
             label=r["nombre"]
         )
 
-    plt.xlabel("x")
+    plt.xlabel("x = βL (adimensional)")
     plt.ylabel("f(x)")
-    plt.title("Raíces aproximadas de la función")
+    plt.title("Ecuación 23 · Vibración de un voladizo")
     plt.legend()
     plt.grid(True)
 
@@ -277,6 +257,7 @@ def graficar(resultados, carpeta="img"):
 
     plt.savefig(os.path.join(carpeta, "convergencia.png"), dpi=300)
     plt.close()
+    print("Figuras guardadas en img/funcion.png y img/convergencia.png")
 
 
 def main():
